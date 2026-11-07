@@ -439,8 +439,8 @@ body.shake .wrap{animation:shake .35s}
 <div class="scene" id="scene"></div>
 <div class="adminbar" id="adminbar" hidden><b>관리자 모드</b><span>모두 해금 · 기록 저장 안 됨</span><button id="admin-exit">나가기</button></div>
 <div class="op" id="op" hidden>
-  <img class="sp l off" id="op-l" src="a/player.webp?v=2" alt="">
-  <img class="sp r off" id="op-r" src="a/garam.webp?v=2" alt="">
+  <img class="sp l off" id="op-l" src="a/player.webp?v=3" alt="">
+  <img class="sp r off" id="op-r" src="a/garam.webp?v=3" alt="">
   <div class="op-title" id="op-title"><div class="logo"><img src="a/logo.webp" alt=""><b>이의 있음!</b></div>
     <div class="foot"><p class="tap" id="op-tap">불러오는 중</p><button class="ghost" id="op-story">오프닝 보기</button></div></div>
   <div class="op-narr" id="op-narr" hidden></div>
@@ -450,7 +450,7 @@ body.shake .wrap{animation:shake .35s}
 <div class="wrap">
   <section id="v-home">
     <div class="hud">
-      <div class="me"><img src="a/player_face.webp?v=2" alt=""><div><b>나 <span class="lv">Lv.<span class="num" id="plv">1</span></span></b><div class="xp"><i id="pxp"></i></div><span class="lv">신입 변호사 · 승소 <b class="num" id="wins" style="display:inline;font-family:var(--mono);font-size:12px">0</b> / 17</span></div></div>
+      <div class="me"><img src="a/player_face.webp?v=3" alt=""><div><b>나 <span class="lv">Lv.<span class="num" id="plv">1</span></span></b><div class="xp"><i id="pxp"></i></div><span class="lv">신입 변호사 · 승소 <b class="num" id="wins" style="display:inline;font-family:var(--mono);font-size:12px">0</b> / 17</span></div></div>
       <div class="right"><span class="pill"><img src="a/ic_timer.webp" alt="">D-<b class="num" id="dday">-</b></span><button class="icon-btn" id="snd" aria-label="효과음 켜기 또는 끄기">🔊</button></div>
     </div>
     <div class="title-wrap"><div class="logo"><img src="a/logo.webp" alt=""><b>이의 있음!</b></div></div>
@@ -550,7 +550,7 @@ const plain=s=>String(s).replace(/<\/?s>/g,"");
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 const it=i=>{const x=D.items[i];return {i,chap:x[0],topic:x[1],src:x[2],page:x[3],q:x[4],opt:x[5],ox:x[6],stem:x[7],fix:x[8],mark:x[9],trap:x[10],cas:x[12]};};
 const lvOf=a=>{let l=0;LV.forEach((t,k)=>{if(a>=t)l=k;});return l;};
-const face=id=>`a/${id}_face.webp?v=2`,sprite=(id,k,battle)=>{if(!k){const w=S&&S.skin&&S.skin[id];k=(w==="p"&&pinOK(id))?(battle?"s":"p"):((w==="s"||w==="p")&&sumOK(id)?"s":"");}return k==="s"?`a/${id}_s.webp?v=1`:(k==="p"?`a/${id}_p.webp?v=1`:`a/${id}.webp?v=2`);};
+const face=id=>`a/${id}_face.webp?v=3`,sprite=(id,k,battle)=>{if(!k){const w=S&&S.skin&&S.skin[id];k=(w==="p"&&pinOK(id))?(battle?"s":"p"):((w==="s"||w==="p")&&sumOK(id)?"s":"");}return k==="s"?`a/${id}_s.webp?v=1`:(k==="p"?`a/${id}_p.webp?v=1`:`a/${id}.webp?v=3`);};
 const PINUP=["player","garam","sia","daon","yuna","banghyeon","twins","seoyun","gaon","sua","narae","eunseo","bomi","hayun","inyoung","doa","rian"];
 const bossWins=()=>(S.boss||[]).filter(b=>b.win!==undefined?b.win:b.ok>=20).length;
 function pinOK(id){if(!S||!PINUP.includes(id)||!sumOK(id))return false;if(id==="player"||id==="garam")return bossWins()>=2;return (S.chars[id]?.aff||0)>=120;}
@@ -815,7 +815,7 @@ function endBattle(){
   const say=o?(win?(o.id==="garam"?gEnd[0]:`좋아, 인정할게. 이제부터 네 편이야. ${o.lines[0]}`):(o.id==="garam"?gEnd[0]:"아직이야. 틀린 지문을 오답 감옥에서 다시 보고 와.")):"";
   play("verdict");if(gEnd&&gEnd[1])setTimeout(()=>voice(gEnd[1]),1700);setTimeout(()=>{play(win?"win":"lose");if(win)flash();if(unlockedNow.length)setTimeout(()=>{play("obj");flash();},700);},900);
   $("v-result").innerHTML=`<div class="card pgwrap res ${win?"win":"lose"}" data-pg="result"><div class="pgbox stack" style="text-align:center;gap:10px"><div class="stack" style="gap:2px;align-items:center"><img class="badge" src="a/${win?"badge_win":"badge_lose"}.webp" alt=""><h2>${win?"승소":"패소"}</h2><p class="small muted">${esc(B.title)} · ${head}</p></div>
-      ${o?`<div class="opp ${B.mode==="boss"?"boss":""}" style="text-align:left"><p class="line" style="--c:${o.color}"><b>${o.name}</b> ${esc(say)}</p><img src="${B.mode==="boss"?(win&&ART.garam_defeat?"a/garam_defeat.webp":sprite("garam","b")):sprite(o.id)}" alt=""></div>`:""}
+      ${o?`<div class="opp ${B.mode==="boss"?"boss":""}" style="text-align:left"><p class="line" style="--c:${o.color}"><b>${o.name}</b> ${esc(say)}</p><img src="${B.mode==="boss"?(win&&ART.garam_defeat?"a/garam_defeat.webp?v=3":sprite("garam","b")):sprite(o.id)}" alt=""></div>`:""}
       ${joined?`<p class="ok"><b>${o.name}</b>이(가) 동료가 됐어요.</p>`:""}
       ${unlockedNow.length?`<div class="sum-new"><p class="sum-tag">${unlockedNow.some(u=>u[1]==="p")?(unlockedNow.some(u=>u[1]==="s")?"여름 의상 · 화보 해금!":"여름 화보 해금!"):"여름 의상 해금!"}</p><div class="sum-row">${unlockedNow.map(([id,k])=>`<figure><img src="${sprite(id,k)}" alt=""><figcaption>${esc(nameOf(id))} · ${k==="p"?"화보":"여름"}<small class="why">${id==="player"||id==="garam"?(k==="p"?"최종 재판 2승":"최종 재판 첫 승소"):(k==="p"?"호감도 120 달성":"호감도 100 각성")}</small></figcaption></figure>`).join("")}</div><p class="small muted">동료 화면에서 의상을 바꿀 수 있어요.</p></div>`:""}
       ${rewards.length?`<div class="stack" style="gap:6px"><p class="small">판례 카드 획득</p><div class="rewards" style="justify-content:center">${rewards.map(c=>cardHTML(c)).join("")}</div></div>`:""}
@@ -899,7 +899,7 @@ function gCut(name,desc,art,lk){
   const ln=lk?gPick(lk):null;if(ln&&ln[1])voice(ln[1]);
   if(calm()){flashNote(`가람 · ${name}: ${desc}${ln?" — "+ln[0]:""}`);return;}
   const d=document.createElement("div");d.className="gcut";
-  const big=art&&ART["garam_"+art]?`<img class="gart" src="a/garam_${art}.webp" alt="">`:`<img class="gart base" src="${sprite("garam",null,1)}" alt="">`;
+  const big=art&&ART["garam_"+art]?`<img class="gart" src="a/garam_${art}.webp?v=3" alt="">`:`<img class="gart base" src="${sprite("garam",null,1)}" alt="">`;
   d.innerHTML=`${big}<div class="gband"><img src="${face("garam")}" alt=""><div><small>가람의 권능</small><b>${esc(name)}</b><span>${esc(desc)}</span>${ln?`<q class="gq">${esc(ln[0])}</q>`:""}</div></div>`;
   document.body.appendChild(d);play("whoosh");setTimeout(()=>play("hit"),250);flash();
   const bye=()=>d.remove();d.onclick=bye;setTimeout(bye,Math.max(ln?3200:2300,ln&&ln[1]&&SND.buf[ln[1]]&&!S.mute?Math.min(SND.buf[ln[1]].duration*1000+500,6500):0));}
@@ -979,7 +979,7 @@ function bossVersusHTML(o){
   </div>`;
 }
 function bossStageHTML(st){
-  const gsrc=B.p2&&ART.garam_awaken?"a/garam_awaken.webp":sprite("garam",null,1);
+  const gsrc=B.p2&&ART.garam_awaken?"a/garam_awaken.webp?v=3":sprite("garam",null,1);
   const dust=Array.from({length:10},(_,i)=>`<i class="dust" style="left:${(i*37)%100}%;animation-delay:${(i*0.7)%5}s;animation-duration:${5+(i%4)}s"></i>`).join("");
   return `<div class="stage boss ${B.p2?"p2":""}" aria-hidden="true">${dust}<div class="bo"><img class="o ${st==="op"?"hurt":""} ${st==="me"?"lunge":""}" src="${gsrc}" alt=""></div><img class="p ${st==="me"?"hurt":(st==="op"?"":"dim")}${!st&&B.arm===1?" aura-sh":""}${!st&&B.arm===3?" aura-pw":""}" src="${sprite("player",null,1)}" alt=""></div>`;
 }
@@ -1010,7 +1010,7 @@ function bossFx(good,hurt,pick,timeout){
   if(calm())return;
   const st=document.querySelector(".stage.boss");if(!st)return;
   if(!good&&hurt){
-    if(ART.garam_attack){const a=document.createElement("img");a.className="gatk";a.src="a/garam_attack.webp";a.alt="";document.body.appendChild(a);setTimeout(()=>a.remove(),900);}
+    if(ART.garam_attack){const a=document.createElement("img");a.className="gatk";a.src="a/garam_attack.webp?v=3";a.alt="";document.body.appendChild(a);setTimeout(()=>a.remove(),900);}
     const r=document.createElement("div");r.className="shock";st.appendChild(r);setTimeout(()=>r.remove(),700);
     crackFx(false);play("slam");
   }
@@ -1027,7 +1027,7 @@ function phase2Fx(){
   if(!B||B.mode!=="boss")return;
   $("scene").classList.add("p2");if(ART.bg_boss2)$("scene").style.backgroundImage="url(a/bg_boss2.webp)";
   if(calm())return;play("crack");crackFx(true);flash();document.body.classList.remove("shake");void document.body.offsetWidth;document.body.classList.add("shake");
-  const st=document.querySelector(".stage.boss");if(st){st.classList.add("p2");const im=st.querySelector(".bo img");if(im&&ART.garam_awaken)im.src="a/garam_awaken.webp";}
+  const st=document.querySelector(".stage.boss");if(st){st.classList.add("p2");const im=st.querySelector(".bo img");if(im&&ART.garam_awaken)im.src="a/garam_awaken.webp?v=3";}
   const bc=document.querySelector(".bosscard");if(bc)bc.classList.add("p2");
 }
 function finaleFx(){
