@@ -383,6 +383,100 @@ body.admin .zx{top:56px}
 @media (orientation:portrait){.otxt{top:9%;right:4vw}.oimg{left:-18vw;height:min(96vh,900px)}}
 .ocut.quick .ospeed,.ocut.quick .oband,.ocut.quick .oimg,.ocut.quick .otxt{animation-duration:.18s;animation-delay:0s}
 @media (prefers-reduced-motion:reduce){.ocut,.ocut *{animation:none!important}.oband{transform:skewY(-9deg)}}
+/* hit feel */
+body.hitstop .wrap,body.hitstop .stage img{animation-play-state:paused!important;filter:brightness(1.35) contrast(1.1)}
+body.shake2 .wrap{animation:shake2 .38s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shake2{10%,90%{transform:translate(calc(var(--amp,6px)*-.3),1px)}20%,80%{transform:translate(calc(var(--amp,6px)*.6),-1px)}30%,50%,70%{transform:translate(calc(var(--amp,6px)*-1),2px)}40%,60%{transform:translate(var(--amp,6px),-2px)}}
+.shard{position:fixed;z-index:27;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:2px;pointer-events:none;box-shadow:0 0 8px currentColor;animation:shard .6s cubic-bezier(.15,.8,.3,1) forwards}
+@keyframes shard{to{translate:var(--dx) var(--dy);opacity:0;scale:.3}}
+.ring{position:fixed;z-index:27;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:5px solid #fff;box-shadow:0 0 18px #F2CF6B,inset 0 0 12px #F2CF6B;pointer-events:none;animation:ring .42s ease-out forwards}
+@keyframes ring{to{scale:7;opacity:0;border-width:1px}}
+.redflash{position:fixed;inset:0;z-index:26;pointer-events:none;background:radial-gradient(circle,transparent 45%,rgba(224,40,60,.55));animation:flash .42s ease-out both}
+.fxsprite{position:fixed;z-index:28;pointer-events:none;translate:-50% -50%;mix-blend-mode:screen;object-fit:contain}
+.fxsprite.slash{animation:fxslash .45s cubic-bezier(.2,.9,.3,1) forwards}
+.fxsprite.impact{animation:fximp .5s ease-out forwards}
+@keyframes fxslash{0%{scale:.6;opacity:0;rotate:-15deg}15%{opacity:1}100%{scale:1.15;opacity:0;rotate:5deg}}
+@keyframes fximp{0%{scale:.2;opacity:1}40%{opacity:1}100%{scale:1.3;opacity:0}}
+.paperfx{position:fixed;z-index:27;width:64px;height:64px;margin:-32px 0 0 -32px;pointer-events:none;animation:paperfx .9s ease-out forwards}
+@keyframes paperfx{to{translate:var(--dx) var(--dy);rotate:var(--r);opacity:0}}
+.crackimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(3) drop-shadow(0 0 2px #fff) drop-shadow(0 0 6px rgba(255,255,255,.6))}
+.crack.red .crackimg{filter:brightness(2.2) sepia(1) saturate(6) hue-rotate(-30deg) drop-shadow(0 0 6px #ff4060)}
+.res .badge-wrap{position:relative;display:inline-block}
+.sparklefx{position:absolute;width:70%;left:60%;top:-10%;pointer-events:none;animation:twinkle 1.6s ease-in-out infinite alternate}
+.sparklefx.l{left:-30%;top:30%;width:50%;animation-delay:.6s}
+@keyframes twinkle{from{opacity:.35;scale:.85}to{opacity:1;scale:1.05}}
+body.has-ui-nameplate .bname b{background:url(a/ui_nameplate.webp?v=1) center/100% 100% no-repeat;color:#3A2A08!important;padding:2px 22px 4px;text-shadow:0 1px 0 rgba(255,255,255,.5)}
+.ospeedimg{position:absolute;left:50%;top:40%;width:max(140vw,140vh);height:max(140vw,140vh);translate:-50% -50%;object-fit:cover;animation:ospin .8s linear both;opacity:.9}
+.sealimg{position:absolute;right:2px;top:0;width:72px;height:72px;object-fit:contain;animation:stamp .3s cubic-bezier(.3,1.6,.5,1) both;pointer-events:none;z-index:2}
+#v-battle .jcard{position:relative;overflow:visible}
+body.has-ui-skill-1 .skill{position:relative;padding-left:40px}
+.skico{position:absolute;left:6px;top:50%;translate:0 -50%;width:30px;height:30px;border-radius:7px}
+/* image skins (applied only when the files exist) */
+body.has-ui-btn-o #bO{background:url(a/ui_btn_o.webp?v=1) center/100% 100% no-repeat;box-shadow:none;clip-path:none}
+body.has-ui-btn-x #bX{background:url(a/ui_btn_x.webp?v=1) center/100% 100% no-repeat;box-shadow:none;clip-path:none;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.35)}
+body.has-ui-btn-o #bO:active,body.has-ui-btn-x #bX:active{filter:brightness(.9);transform:translateY(3px) scale(.98)}
+body.has-ui-hpbar .gauge{overflow:visible;background:rgba(10,8,20,.55);border-radius:999px;margin-left:16%;margin-right:16%}
+body.has-ui-hpbar .bgauge{border:0!important;margin-top:10px}
+body.has-ui-hpbar .gauge::after{content:"";position:absolute;left:-16.2%;right:-16.4%;top:-51%;bottom:-31%;background:url(a/ui_hpbar.webp?v=1) center/100% 100% no-repeat;pointer-events:none;z-index:2}
+body.has-ui-panel #v-battle>.claim{background:url(a/ui_panel.webp?v=1) center/100% 100% no-repeat;border:0;color:#2A2232}
+body.has-ui-panel #v-battle>.claim .who,body.has-ui-panel #v-battle>.claim .muted{color:#5C5268}
+body.has-fx-combo .combo{background:url(a/fx_combo.webp?v=1) center/100% 100% no-repeat;padding:6px 18px;border-radius:0}
+body.has-ui-tabbar .tabs{background:url(a/ui_tabbar.webp?v=1) center/cover no-repeat}
+body.has-ui-frame-result #v-result>.res{background-image:url(a/ui_frame_result.webp?v=1);background-size:100% 100%;background-repeat:no-repeat}
+@media (prefers-reduced-motion:reduce){.shard,.ring,.fxsprite,.paperfx,.redflash{animation:none!important;display:none}}
+/* result hero */
+.res .sum-new{padding:6px 8px}.res .sum-tag{font-size:19px}.res .sum-row img{height:clamp(60px,10dvh,150px)!important}.res .sum-new>p.small{display:none}
+.wnote p:nth-child(2){display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.wnote p:nth-child(3){display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+#v-result>.rhero{flex:0 0 auto;height:clamp(200px,42dvh,460px)}
+@media (max-height:720px){#v-result>.rhero{height:36dvh}.res .sum-row .why{display:none}.rh-say{font-size:13px;padding:6px 10px}}
+.rhero{position:relative;overflow:hidden;border-radius:18px;background:radial-gradient(ellipse at 65% 35%,rgba(255,240,200,.9),rgba(255,214,150,.35) 45%,rgba(40,30,60,.15) 75%),linear-gradient(180deg,rgba(255,255,255,.25),rgba(30,25,50,.35));box-shadow:inset 0 0 0 2px rgba(242,207,107,.55)}
+.rhero.lose{background:radial-gradient(ellipse at 65% 35%,rgba(160,170,210,.55),rgba(40,45,80,.6) 60%,rgba(10,10,25,.85)),#141225;box-shadow:inset 0 0 0 2px rgba(120,130,180,.4)}
+.rhero.boss.win{background:radial-gradient(ellipse at 65% 40%,rgba(255,230,170,.95),rgba(201,154,46,.45) 40%,rgba(30,15,25,.9) 80%),#1a1018}
+.rhero.boss.lose{background:radial-gradient(ellipse at 65% 40%,rgba(255,80,90,.55),rgba(120,10,30,.7) 45%,#0d0710 85%)}
+.rh-rays{position:absolute;inset:-30%;background:repeating-conic-gradient(from 0deg at 65% 45%,rgba(255,255,255,.22) 0 4deg,transparent 4deg 14deg);animation:rays 18s linear infinite;opacity:.8}
+.rhero.lose .rh-rays{opacity:.15}
+@keyframes rays{to{rotate:360deg}}
+.rh-o{position:absolute;bottom:-4%;right:-2%;height:112%;max-width:70%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 10px 20px rgba(0,0,0,.45));animation:rhin .55s .1s cubic-bezier(.2,1.2,.4,1) both;--fx:60px}
+.rh-p{position:absolute;bottom:-6%;left:-4%;height:108%;max-width:62%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 0 0 #fff) drop-shadow(4px 0 0 #fff) drop-shadow(0 10px 20px rgba(0,0,0,.45));animation:rhin .5s cubic-bezier(.2,1.2,.4,1) both;--fx:-60px;z-index:1}
+.rhero.win:not(.ally) .rh-o{filter:grayscale(.35) brightness(.85) drop-shadow(0 10px 20px rgba(0,0,0,.45));height:100%}
+.rhero.boss.win .rh-o{filter:drop-shadow(0 0 24px rgba(255,220,150,.6)) drop-shadow(0 10px 20px rgba(0,0,0,.5));height:108%}
+.rhero.lose .rh-p{filter:grayscale(.75) brightness(.6) drop-shadow(0 10px 20px rgba(0,0,0,.5));height:92%;left:-6%;z-index:0}
+.rhero.lose .rh-o{height:120%;right:-6%;max-width:78%;z-index:1;filter:drop-shadow(0 0 22px var(--oc)) drop-shadow(0 10px 20px rgba(0,0,0,.5))}
+.rhero.boss.lose .rh-o{filter:drop-shadow(0 0 26px rgba(255,60,80,.8)) drop-shadow(0 10px 20px rgba(0,0,0,.5))}
+.rhero.ally .rh-o{height:96%;right:2%}
+@keyframes rhin{from{translate:var(--fx) 0;opacity:0}to{translate:0 0;opacity:1}}
+.rh-title{position:absolute;top:10px;left:0;right:0;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0;pointer-events:none;animation:slam .45s .35s both}
+.rh-title .badge{width:clamp(56px,10vh,88px);margin:0}
+.rh-title .sparklefx{width:44px;left:80%;top:-6%}.rh-title .sparklefx.l{width:32px;left:-30%;top:40%}
+.rh-title h2{font-size:clamp(30px,6vh,46px);line-height:1;color:#fff;-webkit-text-stroke:2px #7E5A12;paint-order:stroke fill;text-shadow:0 4px 0 #7E5A12,0 0 20px rgba(255,220,120,.8)}
+.rhero.lose .rh-title h2{-webkit-text-stroke-color:#2A2440;text-shadow:0 4px 0 #2A2440,0 0 18px rgba(120,140,220,.6);color:#D8DCF0}
+.rh-title p{font-size:12px;color:#fff;background:rgba(10,8,20,.55);border-radius:999px;padding:2px 10px;margin-top:4px}
+.rh-say{position:absolute;z-index:3;left:12px;right:12px;bottom:10px;margin:0 auto;max-width:520px;background:rgba(255,255,255,.94);color:#1D1A2A;border-radius:14px;border-left:5px solid var(--oc);padding:8px 12px;font-size:14px;line-height:1.5;box-shadow:0 6px 16px rgba(0,0,0,.3);animation:fadeup .35s .6s both}
+.rh-say b{display:block;font-family:var(--display);font-weight:400;font-size:13px;color:var(--oc)}
+.rhero.boss .rh-say b{color:#9A6C17}
+@media (orientation:landscape) and (min-width:700px){.rh-o{right:6%}.rh-p{left:6%}}
+@media (prefers-reduced-motion:reduce){.rh-rays,.rh-o,.rh-p,.rh-title,.rh-say{animation:none!important}}
+.unl-btn{width:100%;background:linear-gradient(90deg,#FFF3C4,#FFE0EA);border:1px solid #E2B256;color:#7A4E0A}
+.unl{position:fixed;inset:0;z-index:37;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:max(14px,env(safe-area-inset-top,0px)) 14px max(14px,env(safe-area-inset-bottom,0px));background:radial-gradient(ellipse at 50% 45%,rgba(255,226,160,.95),rgba(232,150,190,.6) 45%,rgba(20,12,30,.94) 80%);overflow:hidden;animation:ofade .25s both}
+.unl-rays{position:absolute;inset:-40%;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.28) 0 5deg,transparent 5deg 15deg);animation:rays 14s linear infinite;pointer-events:none}
+.unl>*:not(.unl-rays){position:relative;z-index:1}
+.unl-tag{font-size:12px;letter-spacing:.35em;color:#fff;background:#C8323F;border-radius:999px;padding:2px 12px}
+.unl-h{font-family:var(--display);font-weight:400;font-size:clamp(30px,6.5vh,48px);color:#fff;-webkit-text-stroke:2px #8A4E10;paint-order:stroke fill;text-shadow:0 4px 0 #8A4E10,0 0 24px rgba(255,220,120,.9);animation:slam .45s both;margin:0}
+.unl-img{flex:1 1 0;min-height:0;max-width:100%;object-fit:contain;filter:drop-shadow(0 0 0 #fff) drop-shadow(0 0 18px rgba(255,255,255,.9)) drop-shadow(0 12px 24px rgba(0,0,0,.4));animation:unlpop .6s .1s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes unlpop{from{scale:.6;opacity:0;translate:0 30px}to{scale:1;opacity:1;translate:0 0}}
+.unl-info{display:flex;flex-direction:column;align-items:center;background:rgba(15,10,25,.7);color:#fff;border-radius:14px;padding:6px 18px}
+.unl-info b{font-family:var(--display);font-weight:400;font-size:20px;color:#FFE38A}.unl-info span{font-size:13px;opacity:.9}
+.unl-bar{display:flex;align-items:center;gap:10px;min-height:8px}.unl-n{color:#fff;font-size:14px}
+.unl-act{display:flex;gap:10px;width:min(420px,100%)}.unl-act .btn{flex:1}
+@media (prefers-reduced-motion:reduce){.unl,.unl *{animation:none!important}}
+/* result hero: opponent only */
+.rhero .rh-o{left:0;right:0;margin:0 auto;max-width:92%;height:118%;bottom:-6%}
+.rhero.win:not(.ally):not(.boss) .rh-o{filter:grayscale(.3) brightness(.9) drop-shadow(0 10px 20px rgba(0,0,0,.45));height:112%}
+.rhero.lose .rh-o{height:124%;right:0;max-width:96%}
+.rhero.boss.win .rh-o{height:110%;bottom:-3%}
+.rh-title{top:8px;left:12px;right:auto;align-items:flex-start}
+.rh-title h2{text-align:left}
 /* ===== game polish: HUD, cut-ins, title/opening, juice ===== */
 .wrap>section:not([hidden]){animation:enter .35s ease-out both}
 @keyframes enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -755,7 +849,7 @@ function renderTurn(){
   B.gnotes=[];if(B.mode==="boss")bossBefore();
   const x=it(B.q[B.k]),o=oppOf(x),t=plain(x.stem),cut=B.blind>=B.k+1?t.length:cutPoint(t);
   const rv=S.review[x.i];const tag=rv?`<span class="state s-${rv.s.slice(0,2)}">${rv.s}</span>`:"";
-  const sk=[1,2,3].map(r=>{const s=B.skills[r];const ok=s&&!s.used;return `<button class="skill ${B.arm===r?"on":""}" data-sk="${r}" ${ok?"":"disabled"}><b>${"★".repeat(r)} ${SKILLS[r].name}</b><span>${s?(s.used?"사용함":SKILLS[r].desc):"카드 없음"}</span></button>`;}).join("");
+  const sk=[1,2,3].map(r=>{const s=B.skills[r];const ok=s&&!s.used;return `<button class="skill ${B.arm===r?"on":""}" data-sk="${r}" ${ok?"":"disabled"}>${FXI["ui_skill_"+r]?`<img class="skico" src="a/ui_skill_${r}.webp?v=${FXV}" alt="">`:""}<b>${"★".repeat(r)} ${SKILLS[r].name}</b><span>${s?(s.used?"사용함":SKILLS[r].desc):"카드 없음"}</span></button>`;}).join("");
   $("v-battle").innerHTML=versusHTML(o)+stageHTML(o)+`
     <div class="card stack claim">
       <div class="row"><p class="who"><b style="color:${o.color}">${o.name}</b>의 주장 · ${esc(D.chaps[x.chap])} · ${esc(x.topic)}</p>${tag}</div>
@@ -808,6 +902,7 @@ function judge(pick,timeout){
   const line=(o.lines?o.lines[Math.min(4,lvOf(S.chars[o.id]?.aff||0))]:null);
   $("v-battle").innerHTML=versusHTML(o)+stageHTML(o,good?"op":"me").replace('class="stage','class="stage jst')+`
     <div class="card pgwrap jcard" data-pg="judge"><div class="pgbox stack" style="gap:8px">
+      ${FXI[good?"fx_seal_ok":"fx_seal_ng"]?`<img class="sealimg" src="a/${good?"fx_seal_ok":"fx_seal_ng"}.webp?v=${FXV}" alt="">`:""}
       <p class="verdict ${good?"ok":"ng"}"><img src="a/${good?"ic_o":"ic_x"}.webp" alt="">${good?"판단 정확":"판단 실패"} · 정답은 ${x.ox}</p>
       ${B.gnotes&&B.gnotes.length?B.gnotes.map(g=>`<p class="gnote"><b>가람 · ${g[0]}</b> ${g[1]}</p>`).join(""):""}
       <p class="dmg ${good?"ok":"ng"}">${good?`${o.name} 신뢰도 −${dmg}`:(hurt?`내 신뢰도 −${hurt}`:"피해 없음")}</p>${note?`<p class="small" style="color:var(--gold)">${note}</p>`:""}
@@ -819,6 +914,7 @@ function judge(pick,timeout){
     <div class="row jact"><button class="btn primary big" id="next">${over?"판결 보기":"다음 주장"}</button></div>`;
   pgReset("judge");relayout();
   const side=$(good?"op-side":"me-side");if(side&&!matchMedia("(prefers-reduced-motion: reduce)").matches)side.classList.add("hit");
+  hitFx(good,dmg,hurt,note);
   if(good&&dmg)floatAt("op-side","−"+dmg+(note.startsWith("전합")?" ×2":""),false,note.startsWith("전합")?"big":"");else if(hurt)floatAt("me-side","−"+hurt,true);
   if(note.startsWith("판례 방패")){floatAt("me-side","방어!",true,"guard");play("shield");}
   if(note.startsWith("전합")){play("power");flash();}
@@ -848,17 +944,17 @@ function endBattle(){
   const gEnd=B.mode==="boss"?gPick(win?(B.wrong.length?"win":"winPerfect"):(B.my>0?"loseTime":"lose")):null;
   const say=o?(win?(o.id==="garam"?gEnd[0]:`좋아, 인정할게. 이제부터 네 편이야. ${o.lines[0]}`):(o.id==="garam"?gEnd[0]:"아직이야. 틀린 지문을 오답 감옥에서 다시 보고 와.")):"";
   play("verdict");if(gEnd&&gEnd[1])setTimeout(()=>voice(gEnd[1]),1700);setTimeout(()=>{play(win?"win":"lose");if(win)flash();if(unlockedNow.length)setTimeout(()=>{play("obj");flash();},700);},900);
-  $("v-result").innerHTML=`<div class="card pgwrap res ${win?"win":"lose"}" data-pg="result"><div class="pgbox stack" style="text-align:center;gap:10px"><div class="stack" style="gap:2px;align-items:center"><img class="badge" src="a/${win?"badge_win":"badge_lose"}.webp" alt=""><h2>${win?"승소":"패소"}</h2><p class="small muted">${esc(B.title)} · ${head}</p></div>
-      ${o?`<div class="opp ${B.mode==="boss"?"boss":""}" style="text-align:left"><p class="line" style="--c:${o.color}"><b>${o.name}</b> ${esc(say)}</p><img src="${B.mode==="boss"?(win&&ART.garam_defeat?"a/garam_defeat.webp?v=3":sprite("garam","b")):sprite(o.id)}" alt="" data-zoom="${B.mode==="boss"?"garam":o.id}"></div>`:""}
+  $("v-result").innerHTML=resultHero(win,o,say,head)+`<div class="card pgwrap res ${win?"win":"lose"}" data-pg="result"><div class="pgbox stack" style="text-align:center;gap:10px">
       ${joined?`<p class="ok"><b>${o.name}</b>이(가) 동료가 됐어요.</p>`:""}
-      ${unlockedNow.length?`<div class="sum-new"><p class="sum-tag">${unlockedNow.some(u=>u[1]==="p")?(unlockedNow.some(u=>u[1]==="s")?"수영복 · 화보 해금!":"화보 해금!"):"수영복 해금!"}</p><div class="sum-row">${unlockedNow.map(([id,k])=>`<figure><img src="${sprite(id,k)}" alt="" data-zoom="${id}" data-zk="${k}"><figcaption>${esc(nameOf(id))} · ${k==="p"?"화보":"수영복"}<small class="why">${id==="player"||id==="garam"?(k==="p"?"최종 재판 2승":"최종 재판 첫 승소"):(k==="p"?"호감도 120 달성":"호감도 100 각성")}</small></figcaption></figure>`).join("")}</div><p class="small muted">동료 화면에서 의상을 바꿀 수 있어요.</p></div>`:""}
+      ${unlockedNow.length?`<button class="btn unl-btn" id="unl-open">🎁 새 의상 ${unlockedNow.length}벌 해금 · 다시 보기</button>`:""}
       ${rewards.length?`<div class="stack" style="gap:6px"><p class="small">판례 카드 획득</p><div class="rewards" style="justify-content:center">${rewards.map(c=>cardHTML(c)).join("")}</div></div>`:""}
       ${B.aff?`<p class="small muted">${ally().name} 호감도 +${B.aff}</p>`:""}
-    ${B.wrong.length?`<p class="small muted" style="text-align:left">틀린 지문 ${B.wrong.length}개 · 오답 감옥에 들어갔어요</p>${B.wrong.map(i=>{const x=it(i);return `<div class="note stack" style="gap:6px;text-align:left"><p class="small muted">${esc(D.chaps[x.chap])} · 정답 ${x.ox} · <span class="state s-${S.review[i].s.slice(0,2)}">${S.review[i].s}</span></p><p>${esc(plain(x.stem))}</p><p class="small">${esc(x.fix)}</p></div>`}).join("")}`:`<p class="ok">한 번도 틀리지 않았어요.</p>`}
+    ${B.wrong.length?`${B.wrong.map((i,j)=>{const x=it(i);return `<div class="note stack wnote" style="gap:4px;text-align:left"><p class="small muted">${j===0?`<b class="ng">틀린 지문 ${B.wrong.length}개 · 오답 감옥행</b><br>`:""}${esc(D.chaps[x.chap])} · 정답 ${x.ox} · <span class="state s-${S.review[i].s.slice(0,2)}">${S.review[i].s}</span></p><p>${esc(plain(x.stem))}</p><p class="small">${esc(x.fix)}</p></div>`}).join("")}`:`<p class="ok">한 번도 틀리지 않았어요.</p>`}
     </div><div class="pager"></div></div>
     <div class="row ract"><button class="btn big" id="r-home">홈으로</button><button class="btn big primary" id="r-again">${B.mode==="court"&&win?"다음 법정":"다시 도전"}</button></div>`;
   const mode=B.mode,who=B.who;
   pgReset("result");show("result",mode==="boss"?"bg_boss":"bg_battle");
+  if(unlockedNow.length){const u=unlockedNow.slice();$("unl-open").onclick=()=>unlockShow(u);setTimeout(()=>unlockShow(u),2300);}
   $("r-home").onclick=()=>show("home");
   $("r-again").onclick=()=>{if(mode==="court"&&win){let nc=CH[who].chap+1;while(nc<18&&!BY_CHAP[nc])nc++;const nx=BY_CHAP[nc];if(nx&&CH[nx].chap!==9)startBattle("court",nx);else show("court");}else startBattle(mode,who);};
 }
@@ -934,9 +1030,9 @@ function gCut(name,desc,art,lk){
   if(calm()){flashNote(`가람 · ${name}: ${desc}${ln?" — "+ln[0]:""}`);return;}
   const d=document.createElement("div");d.className="gcut";
   const k2=B&&B.p2&&art&&art!=="awaken"&&ART["garam_"+art+"2"]?art+"2":art;
-  const fb=B&&B.p2&&ART.garam_awaken?"a/garam_awaken.webp?v=3":sprite("garam","b");
-  const big=k2&&ART["garam_"+k2]?`<img class="gart" src="a/garam_${k2}.webp?v=3" alt="">`:`<img class="gart base" src="${fb}" alt="">`;
-  d.innerHTML=`${big}<div class="gband"><img src="${face("garam")}" alt=""><div><small>가람의 권능</small><b>${esc(name)}</b><span>${esc(desc)}</span>${ln?`<q class="gq">${esc(ln[0])}</q>`:""}</div></div>`;
+  const fb=B&&B.p2&&ART.garam_awaken?"a/garam_awaken.webp?v=4":GBOSS;
+  const big=k2&&ART["garam_"+k2]?`<img class="gart" src="a/garam_${k2}.webp?v=4" alt="">`:`<img class="gart base" src="${fb}" alt="">`;
+  d.innerHTML=`${big}<div class="gband"><img src="${GBOSSF}" alt=""><div><small>가람의 권능</small><b>${esc(name)}</b><span>${esc(desc)}</span>${ln?`<q class="gq">${esc(ln[0])}</q>`:""}</div></div>`;
   document.body.appendChild(d);play("whoosh");setTimeout(()=>play("hit"),250);flash();
   const bye=()=>d.remove();d.onclick=bye;setTimeout(bye,Math.max(ln?3200:2300,ln&&ln[1]&&SND.buf[ln[1]]&&!S.mute?Math.min(SND.buf[ln[1]].duration*1000+500,6500):0));}
 function bossBefore(){
@@ -998,31 +1094,32 @@ function gPick(k){const a=GL[k]||[["…"]];let i=Math.floor(Math.random()*a.leng
 function gSay(k,ms,delay){
   const go=()=>{if(!B||B.mode!=="boss")return;const ln=gPick(k);if(ln[1])voice(ln[1]);
     document.querySelectorAll(".gsay").forEach(e=>e.remove());
-    const e=document.createElement("div");e.className="gsay";e.innerHTML=`<img src="${face("garam")}" alt=""><p><b>가람</b>${esc(ln[0])}</p>`;
+    const e=document.createElement("div");e.className="gsay";e.innerHTML=`<img src="${GBOSSF}" alt=""><p><b>가람</b>${esc(ln[0])}</p>`;
     const im=document.querySelector(".stage.boss .bo img");let top=80;if(im){const r=im.getBoundingClientRect();top=Math.min(Math.max(r.top+18,72),innerHeight-140);}
     e.style.top=top+"px";document.body.appendChild(e);e.onclick=()=>e.remove();const vd=ln[1]&&SND.buf[ln[1]]&&S&&!S.mute?SND.buf[ln[1]].duration*1000+400:0;setTimeout(()=>e.remove(),Math.max(ms||2400,vd));};
   delay?setTimeout(go,delay):go();}
 
 /* ---------- 보스전 연출 ---------- */
-const ART={};["garam_attack","garam_awaken","garam_heal","garam_defeat","bg_boss2","garam_attack2","garam_heal2"].forEach(n=>{const i=new Image();i.onload=()=>{ART[n]=true;};i.src=`a/${n}.webp?v=3`;});
+const GBOSS="a/garam_boss.webp?v=1",GBOSSF="a/garam_boss_face.webp?v=1";
+const ART={};["garam_attack","garam_awaken","garam_heal","garam_defeat","bg_boss2","garam_attack2","garam_heal2"].forEach(n=>{const i=new Image();i.onload=()=>{ART[n]=true;};i.src=`a/${n}.webp?v=4`;});
 function bossVersusHTML(o){
   const t=B.k+1;
   return `<div class="card stack bosscard ${B.p2?"p2":""}" style="gap:8px">
     <div class="top"><p class="small muted">최종 재판 · ${t}턴 / 25</p><span class="pill"><img src="a/ic_timer.webp" alt="남은 시간"><b class="num" id="bt-time">${fmt(B.end-Date.now())}</b></span></div>
-    <div class="bhp side r" id="op-side"><div class="bname"><img src="${face("garam")}" alt="" style="--c:#C99A2E"><b>심판관 가람</b>${B.p2?`<span class="p2tag">최후 변론</span>`:""}<span class="num bnum">${B.op} / ${B.opMax}</span></div>
+    <div class="bhp side r" id="op-side"><div class="bname"><img src="${GBOSSF}" alt="" style="--c:#C99A2E"><b>심판관 가람</b>${B.p2?`<span class="p2tag">최후 변론</span>`:""}<span class="num bnum">${B.op} / ${B.opMax}</span></div>
       <div class="gauge bgauge"><s style="width:${(B.gOp??B.op)/B.opMax*100}%" data-to="${B.op/B.opMax*100}"></s><i style="width:${B.op/B.opMax*100}%"></i><em title="2페이즈" style="left:50%"></em></div></div>
     <div class="mhp side l" id="me-side"><img src="${face("player")}" alt="" style="--c:#1F3A6B"><div class="meta"><b>나 ${B.combo>=2?`<span class="combo">${B.combo} COMBO${B.combo>=3?" +"+(B.combo>=6?2:1):""}</span>`:""}</b><div class="gauge"><s style="width:${(B.gMy??B.my)/B.myMax*100}%" data-to="${B.my/B.myMax*100}"></s><i style="width:${B.my/B.myMax*100}%"></i></div></div><span class="num small">${B.my}</span></div>
   </div>`;
 }
 function bossStageHTML(st){
-  const gsrc=B.p2&&ART.garam_awaken?"a/garam_awaken.webp?v=3":sprite("garam","b");
+  const gsrc=B.p2&&ART.garam_awaken?"a/garam_awaken.webp?v=4":GBOSS;
   const dust=Array.from({length:10},(_,i)=>`<i class="dust" style="left:${(i*37)%100}%;animation-delay:${(i*0.7)%5}s;animation-duration:${5+(i%4)}s"></i>`).join("");
   return `<div class="stage boss ${B.p2?"p2":""}" aria-hidden="true">${dust}<div class="bo"><img class="o ${st==="op"?"hurt":""} ${st==="me"?"lunge":""}" src="${gsrc}" alt=""></div><img class="p ${st==="me"?"hurt":(st==="op"?"":"dim")}${!st&&B.arm===1?" aura-sh":""}${!st&&B.arm===3?" aura-pw":""}" src="${sprite("player",null,1)}" alt=""></div>`;
 }
 function bossIntro(){
   const d=document.createElement("div");d.className="bintro";
   d.innerHTML=`<div class="warn top"><span>WARNING · 최종 재판 · WARNING · 최종 재판 · WARNING · 최종 재판 · </span></div>
-    <img class="bimg" src="${sprite("garam","b")}" alt="">
+    <img class="bimg" src="${GBOSS}" alt="">
     <div class="bplate"><small>THE FINAL JUDGE</small><b>심판관 가람</b><q class="gq">${esc(GL.intro[0][0])}</q><div class="bfill"><i></i></div></div>
     <div class="warn bot"><span>판례만이 무기다 · 판례만이 무기다 · 판례만이 무기다 · 판례만이 무기다 · </span></div>`;
   document.body.appendChild(d);play("warn");
@@ -1047,7 +1144,7 @@ function bossFx(good,hurt,pick,timeout){
   const st=document.querySelector(".stage.boss");if(!st)return;
   if(!good&&hurt){
     const atkKey=B.p2&&ART.garam_attack2?"garam_attack2":"garam_attack";
-    if(ART[atkKey]){const a=document.createElement("img");a.className="gatk";a.src=`a/${atkKey}.webp?v=3`;a.alt="";document.body.appendChild(a);setTimeout(()=>a.remove(),900);}
+    if(ART[atkKey]){const a=document.createElement("img");a.className="gatk";a.src=`a/${atkKey}.webp?v=4`;a.alt="";document.body.appendChild(a);setTimeout(()=>a.remove(),900);}
     const r=document.createElement("div");r.className="shock";st.appendChild(r);setTimeout(()=>r.remove(),700);
     crackFx(false);play("slam");
   }
@@ -1058,13 +1155,14 @@ function goldSpark(){const o=document.querySelector(".stage.boss .bo img");if(!o
   for(let i=0;i<16;i++){const e=document.createElement("i");e.className="spark gold";e.textContent=i%3?"✦":"⚖";e.style.left=(r.left+r.width*(.2+Math.random()*.6))+"px";e.style.top=(Math.max(60,r.top)+Math.random()*160)+"px";e.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(e);setTimeout(()=>e.remove(),1800);}}
 function crackFx(red){
   const c=document.createElement("div");c.className="crack"+(red?" red":"");
+  if(FXI.fx_crack){c.innerHTML=`<img class="crackimg" src="a/fx_crack.webp?v=${FXV}" alt="">`;document.body.appendChild(c);setTimeout(()=>c.remove(),red?1300:650);return;}
   c.innerHTML=`<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M50 48 L38 30 L41 12 L33 0 M50 48 L66 36 L80 38 L100 24 M50 48 L60 62 L57 80 L64 100 M50 48 L34 56 L18 54 L0 66 M50 48 L45 64 L30 78 M50 48 L58 40 L56 22"/></svg>`;
   document.body.appendChild(c);setTimeout(()=>c.remove(),red?1300:650);}
 function phase2Fx(){
   if(!B||B.mode!=="boss")return;
   $("scene").classList.add("p2");if(ART.bg_boss2)$("scene").style.backgroundImage="url(a/bg_boss2.webp?v=3)";
   if(calm())return;play("crack");crackFx(true);flash();document.body.classList.remove("shake");void document.body.offsetWidth;document.body.classList.add("shake");
-  const st=document.querySelector(".stage.boss");if(st){st.classList.add("p2");const im=st.querySelector(".bo img");if(im&&ART.garam_awaken)im.src="a/garam_awaken.webp?v=3";}
+  const st=document.querySelector(".stage.boss");if(st){st.classList.add("p2");const im=st.querySelector(".bo img");if(im&&ART.garam_awaken)im.src="a/garam_awaken.webp?v=4";}
   const bc=document.querySelector(".bosscard");if(bc)bc.classList.add("p2");
 }
 function finaleFx(){
@@ -1206,9 +1304,67 @@ function objCut(full){
   if(calm()){fx(true);return;}
   const quick=!full&&B&&(B.objN=(B.objN||0)+1)>1;
   const d=document.createElement("div");d.className="ocut"+(quick?" quick":"");
-  d.innerHTML=`<div class="ospeed"></div><div class="oband"></div><img class="oimg" src="${src}" alt=""><b class="otxt">이의 있음!</b>`;
+  d.innerHTML=`${FXI.fx_speedline?`<img class="ospeedimg" src="a/fx_speedline.webp?v=${FXV}" alt="">`:`<div class="ospeed"></div>`}<div class="oband"></div><img class="oimg" src="${src}" alt=""><b class="otxt">이의 있음!</b>`;
   document.body.appendChild(d);flash();document.body.classList.remove("shake");void document.body.offsetWidth;document.body.classList.add("shake");
   const bye=()=>{d.classList.add("bye");setTimeout(()=>d.remove(),180);};d.onclick=bye;setTimeout(bye,full?1300:(quick?520:820));
+}
+
+/* ---------- UI·이펙트 이미지 (있으면 자동 적용) ---------- */
+const FXV=1,FXI={};
+["fx_slash","fx_impact","fx_crack","fx_speedline","ui_btn_o","ui_btn_x","ui_hpbar","ui_panel","ui_nameplate","fx_seal_ok","fx_seal_ng","fx_combo","ui_skill_1","ui_skill_2","ui_skill_3","fx_paper","fx_sparkle","ui_frame_result","bg_battle2"].forEach(n=>{
+  const i=new Image();i.onload=()=>{FXI[n]=true;document.body.classList.add("has-"+n.replace(/_/g,"-"));if(n==="bg_battle2"&&typeof BG!=="undefined")BG.battle="bg_battle2";};i.src=`a/${n}.webp?v=${FXV}`;});
+function hitstop(ms){if(calm())return;document.body.classList.add("hitstop");setTimeout(()=>document.body.classList.remove("hitstop"),ms);}
+function shakeBy(n){if(calm())return;const w=document.querySelector(".wrap");if(!w)return;w.style.setProperty("--amp",Math.min(14,3+n/2.5)+"px");document.body.classList.remove("shake2");void document.body.offsetWidth;document.body.classList.add("shake2");setTimeout(()=>document.body.classList.remove("shake2"),380);}
+function burstAt(x,y,col,n){if(calm())return;for(let i=0;i<n;i++){const e=document.createElement("i");e.className="shard";const a=Math.random()*Math.PI*2,d=40+Math.random()*90;
+  e.style.cssText=`left:${x}px;top:${y}px;--dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px;background:${col};transform:rotate(${Math.random()*180}deg)`;document.body.appendChild(e);setTimeout(()=>e.remove(),650);}
+  if(FXI.fx_paper&&Math.random()<.7){for(let i=0;i<3;i++){const p=document.createElement("img");p.className="paperfx";p.src=`a/fx_paper.webp?v=${FXV}`;p.alt="";const a=-Math.PI/2+(Math.random()-.5)*2.2,d=90+Math.random()*80;p.style.cssText=`left:${x}px;top:${y}px;--dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px;--r:${(Math.random()-.5)*540}deg`;document.body.appendChild(p);setTimeout(()=>p.remove(),900);}}}
+function spriteAt(name,x,y,size,cls){if(!FXI[name]||calm())return;const e=document.createElement("img");e.className="fxsprite "+(cls||"");e.src=`a/${name}.webp?v=${FXV}`;e.alt="";e.style.cssText=`left:${x}px;top:${y}px;width:${size}px;height:${size}px`;document.body.appendChild(e);setTimeout(()=>e.remove(),520);}
+function hitFx(good,dmg,hurt,note){
+  if(good&&dmg){
+    const big=note&&note.startsWith("전합");
+    const tgt=document.querySelector(".stage .o")||document.querySelector("#op-side img");if(!tgt)return;
+    const r=tgt.getBoundingClientRect(),x=r.left+r.width/2,y=Math.max(90,r.top+Math.min(r.height*.28,220));
+    hitstop(big?130:80);
+    setTimeout(()=>{const sz=Math.min(innerWidth*.9,big?560:420);spriteAt("fx_slash",x,y,sz,"slash");spriteAt("fx_impact",x,y,sz*.7,"impact");
+      burstAt(x,y,big?"#FF6B6B":"#F2CF6B",big?16:10);shakeBy(dmg*(big?1.6:1));if(!FXI.fx_impact){const f=document.createElement("i");f.className="ring";f.style.cssText=`left:${x}px;top:${y}px`;document.body.appendChild(f);setTimeout(()=>f.remove(),450);}},big?130:80);
+  }else if(hurt){hitstop(60);setTimeout(()=>{shakeBy(hurt);const m=document.querySelector("#me-side img");if(m){const r=m.getBoundingClientRect();burstAt(r.left+r.width/2,r.top+r.height/2,"#E0485A",8);}const v=document.createElement("div");v.className="redflash";document.body.appendChild(v);setTimeout(()=>v.remove(),420);},60);}
+}
+
+/* ---------- 결과 화면 캐릭터 무대 ---------- */
+function resultHero(win,o,say,head){
+  const boss=B.mode==="boss";
+  const sw=S.skin&&(S.skin.player==="s"||S.skin.player==="p")&&sumOK("player");
+  const pImg=win?(sw?"a/player_obj_s.webp?v=1":"a/player_obj.webp?v=1"):sprite("player");
+  let oImg="",oId="",oName="",oCol="#C99A2E";
+  if(boss){oId="garam";oName="심판관 가람";oImg=win?(ART.garam_defeat?"a/garam_defeat.webp?v=4":GBOSS):(ART.garam_awaken?"a/garam_awaken.webp?v=4":GBOSS);}
+  else if(o){oId=o.id;oName=o.name;oCol=o.color;oImg=sprite(o.id);}
+  else{const a=ally();if(a){oId=a.id;oName=a.name;oCol=a.color;oImg=sprite(a.id);say=win?a.lines[Math.min(4,lvOf(S.chars[a.id]?.aff||0))]:"괜찮아. 틀린 건 오답 감옥에서 다시 잡으면 돼.";}}
+  const ally_=!boss&&!o;
+  return `<div class="rhero ${win?"win":"lose"} ${boss?"boss":""} ${ally_?"ally":""}" style="--oc:${oCol}">
+    <div class="rh-rays"></div>
+    ${oImg?`<img class="rh-o" src="${oImg}" alt="" data-zoom="${oId}">`:""}
+    <div class="rh-title"><span class="badge-wrap"><img class="badge" src="a/${win?"badge_win":"badge_lose"}.webp" alt="">${win&&FXI.fx_sparkle?`<img class="sparklefx" src="a/fx_sparkle.webp?v=${FXV}" alt=""><img class="sparklefx l" src="a/fx_sparkle.webp?v=${FXV}" alt="">`:""}</span><h2>${win?"승소":"패소"}</h2><p>${esc(B.title)} · ${head}</p></div>
+    ${say&&oName?`<p class="rh-say"><b>${esc(oName)}</b>${esc(say)}</p>`:""}
+  </div>`;
+}
+
+/* ---------- 의상 해금 팝업 ---------- */
+function unlockShow(list){
+  document.querySelectorAll(".unl").forEach(e=>e.remove());
+  let i=0;const d=document.createElement("div");d.className="unl";d.setAttribute("role","dialog");d.setAttribute("aria-label","새 의상 해금");
+  const why=(id,k)=>id==="player"||id==="garam"?(k==="p"?"최종 재판 2승 달성":"최종 재판 첫 승소"):(k==="p"?"호감도 120 달성":"호감도 100 각성");
+  const draw=()=>{const [id,k]=list[i];
+    d.innerHTML=`<div class="unl-rays"></div><p class="unl-tag">NEW OUTFIT</p><h3 class="unl-h">${k==="p"?"화보":"수영복"} 해금!</h3>
+    <img class="unl-img" src="${sprite(id,k)}" alt="${esc(nameOf(id))}">
+    <div class="unl-info"><b>${esc(nameOf(id))}</b><span>${why(id,k)}</span></div>
+    <div class="unl-bar">${list.length>1?`<button class="zb" data-ud="-1" ${i===0?"disabled":""} aria-label="이전">‹</button><span class="unl-n">${i+1} / ${list.length}</span><button class="zb" data-ud="1" ${i===list.length-1?"disabled":""} aria-label="다음">›</button>`:""}</div>
+    <div class="unl-act"><button class="btn" data-uwear>지금 입히기</button><button class="btn primary" data-uclose>${i<list.length-1?"다음":"확인"}</button></div>`;};
+  draw();document.body.appendChild(d);play("win");flash();
+  d.onclick=e=>{const ud=e.target.closest("[data-ud]");if(ud){i=Math.max(0,Math.min(list.length-1,i+ +ud.dataset.ud));draw();play("click");return;}
+    if(e.target.closest("[data-uwear]")){const [id,k]=list[i];S.skin=S.skin||{};S.skin[id]=k;save();flashNote(`${nameOf(id)}에게 ${k==="p"?"화보":"수영복"}을 입혔어요.`);return;}
+    if(e.target.closest("[data-uclose]")){if(i<list.length-1){i++;draw();play("click");}else d.remove();}};
+  let sx=null;d.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;},{passive:true});
+  d.addEventListener("touchend",e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>60){i=Math.max(0,Math.min(list.length-1,i+(dx<0?1:-1)));draw();}},{passive:true});
 }
 
 /* ---------- 관리자 모드 ---------- */
@@ -1277,7 +1433,7 @@ function cutIn(o,title,mode){
   if(mode==="boss"){bossIntro();return;}
   const d=document.createElement("div");d.className="cut";
   const sub=mode==="boss"?"25문항 · 25분":(mode==="court"?"검사 "+o.name:"OX "+(B.maxT)+"턴");
-  d.innerHTML=`<div class="band"></div><img class="l" src="${sprite("player",null,1)}" alt=""><img class="r" src="${o.id==="garam"?sprite("garam","b"):sprite(o.id,null,1)}" alt=""><b class="vsbig">VS</b><p class="ttl">${esc(title)} 개정<small>${esc(sub)}</small></p>`;
+  d.innerHTML=`<div class="band"></div><img class="l" src="${sprite("player",null,1)}" alt=""><img class="r" src="${o.id==="garam"?(mode==="boss"?GBOSS:sprite("garam","b")):sprite(o.id,null,1)}" alt=""><b class="vsbig">VS</b><p class="ttl">${esc(title)} 개정<small>${esc(sub)}</small></p>`;
   document.body.appendChild(d);play("whoosh");setTimeout(()=>{play("open");},380);setTimeout(()=>play("hit"),470);
   const bye=()=>{d.remove();};d.onclick=bye;setTimeout(bye,1900);
 }
