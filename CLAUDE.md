@@ -18,4 +18,10 @@
 ## 주의
 - 기록은 localStorage 키 `pansorye`에 저장된다. 저장 구조(`fresh()`)를 바꾸면 기존 기록과 호환되게 한다.
 - 이미지를 바꿀 때는 같은 파일명으로 덮어쓰고, 새 파일이면 webp로 넣는다. 큰 이미지는 줄여서 넣는다(캐릭터 전신 약 100~200KB).
-- `a/garam_attack.webp`, `garam_awaken`, `garam_heal`, `garam_defeat`, `bg_boss2`는 없으면 기본 그림을 쓰는 선택 파일이다. 404가 나도 정상이다.
+- `a/garam_attack2.webp`, `garam_heal2`처럼 게임이 미리 불러 보는 선택 그림은 없으면 기본 그림을 쓴다. 404가 나도 정상이다.
+
+## claude.ai 아티팩트에서 옮겨 오기
+사용자가 claude.ai 아티팩트(https://claude.ai/artifact/1KPQU3cLwy5bfGUGRDdUCu)에서 게임을 고친 뒤 "앱에 옮겨줘"라고 하면:
+1. Artifact 도구로 파일 목록을 보고, 모든 파일을 작업 폴더 밖(스크래치패드)에 받는다.
+2. `python3 tools/port-artifact.py <받은 index.html>` 로 앱용 index.html을 만든다. 기준 문구를 못 찾고 멈추면 그 단계만 손으로 맞춘다.
+3. `a/`, `f/`, `data.json` 중 바뀐 파일만 덮어쓰고, 위의 "고친 뒤 반드시"를 따른다.
