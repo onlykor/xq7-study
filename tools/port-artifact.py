@@ -104,8 +104,9 @@ s = s.rstrip()
 if s.endswith('</body></html>'):
     s = s[:-len('</body></html>')].rstrip()
 # 홈 화면 앱(standalone)에서는 상단 상태 표시줄·하단 홈 바(safe area)만큼 화면이 밀린다.
-# 게임 화면 높이에서 그만큼 빼야 아래쪽 넘기기 버튼이 탭 막대 뒤로 숨지 않는다.
-s += '\n<style>.wrap{height:calc(100dvh - var(--tabh) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}</style>'
+# 게임의 relayout()은 --wh = (화면 높이 - 탭 막대 높이) / 확대 비율로 잡는데, 탭 막대 높이에 하단 홈 바는
+# 들어 있지만 상단 상태 표시줄(:root padding-top)은 빠져 있다. 그만큼만 더 빼야 넘기기 버튼이 탭 막대 뒤로 숨지 않는다.
+s += '\n<style>.wrap{height:calc(var(--wh,calc(100dvh - var(--tabh) - env(safe-area-inset-bottom,0px))) - env(safe-area-inset-top,0px) / var(--z,1))}</style>'
 s += '\n<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>\n</body></html>\n'
 
 left = [w for w in ('claude.use', 'sampleFn', 'store.ref') if w in s]
