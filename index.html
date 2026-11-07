@@ -1488,5 +1488,6 @@ $("snd").onclick=()=>{S.mute=!S.mute;save();$("snd").textContent=S.mute?"🔇":"
   await initStore();show("home");opReady();
 })();
 </script>
+<style>.wrap{height:calc(100dvh - var(--tabh) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}</style>
 <script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
 </body></html>
