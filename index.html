@@ -349,8 +349,8 @@ body{margin:0}
 body.admin .toast{top:56px}
 @media (max-height:700px){#v-battle>.stage.jst{display:none}}
 .sheet{position:fixed;inset:0;z-index:34;background:rgba(10,8,18,.55);display:flex;align-items:flex-end;justify-content:center}
-.sheet .in{width:min(640px,100%);max-height:80dvh;background:var(--card);color:var(--ink);border-radius:18px 18px 0 0;padding:16px 18px max(18px,env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px;box-shadow:0 -10px 30px rgba(0,0,0,.3);animation:fadeup .25s both}
-.sheet .in p.ai{font-size:16px;line-height:1.75;white-space:pre-line;overflow:hidden}
+.sheet>.in{width:min(640px,100%);max-height:80dvh;background:var(--card);color:var(--ink);border-radius:18px 18px 0 0;padding:16px 18px max(18px,env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px;box-shadow:0 -10px 30px rgba(0,0,0,.3);animation:fadeup .25s both}
+.sheet>.in p.ai{font-size:16px;line-height:1.75;white-space:pre-line;overflow:hidden}
 .adminbar .tools{background:#1D1A2A;border:1px solid #F2C14E;color:#FFE38A}
 .tool-tabs{flex-wrap:wrap}.tool-tabs .btn{flex:1 1 auto;font-size:13px;padding:6px 10px;min-height:36px}
 .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
@@ -589,7 +589,7 @@ body.shake .wrap{animation:shake .35s}
 .qbar.ready{animation:qglow 1.4s ease-in-out infinite alternate}
 .qbar.ready::after{content:"보상 받기";position:absolute;right:10px;top:-9px;background:var(--seal,#C8323C);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:9px}
 @keyframes qglow{from{box-shadow:0 0 0 rgba(242,193,78,0)}to{box-shadow:0 0 18px rgba(242,193,78,.75)}}
-.sheet .in.qpanel{max-height:88dvh;overflow:auto;gap:12px;background:#FFFBF2;background-image:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.sheet>.in.qpanel{max-height:88dvh;overflow:auto;gap:12px;background:#FFFBF2;background-image:none;-webkit-backdrop-filter:none;backdrop-filter:none}
 .qpanel .btn{white-space:nowrap}
 .qpanel .qsub{font-size:13px;color:var(--muted,#777);margin-top:-6px}
 .qrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 12px;align-items:center;padding:12px 14px;border-radius:14px;background:rgba(201,154,46,.08);border:1px solid rgba(201,154,46,.35)}
@@ -635,8 +635,9 @@ body.has-ui-panel #v-battle>.claim::before{width:112px;height:36px;top:-2px}
 
 body.has-ui-panel #v-battle>.claim{overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain}
 @media (max-width:400px){#v-battle .jcard .verdict{font-size:18px;padding-right:66px}#v-battle .jcard .sealimg{width:60px;height:60px}}
-.sheet .in{zoom:var(--z,1);width:min(640px,calc(100vw / var(--z,1)));max-height:calc(80dvh / var(--z,1))}
-.sheet .in.qpanel{max-height:calc(88dvh / var(--z,1))}
+.sheet>.in{zoom:var(--z,1);width:min(640px,calc(100vw / var(--z,1)));max-height:calc(80dvh / var(--z,1))}
+.sheet>.in.qpanel{max-height:calc(88dvh / var(--z,1))}
+.rhero.lose.ally .rh-o{height:104%;bottom:-4%;max-width:92%;filter:grayscale(.2) brightness(.92) drop-shadow(0 0 18px var(--oc)) drop-shadow(0 10px 20px rgba(0,0,0,.5))}
 
 @media (max-height:690px){#v-battle>.claim>.small.muted{display:none}.vs-card .lbl,.versus .meta{display:none}}
 </style>
@@ -1367,7 +1368,9 @@ function paginate(w){
   kids.forEach(k=>{if(k.classList.contains("fullpage"))return;let f=100;while(k.offsetHeight>avail&&f>62){f-=6;k.style.fontSize=f+"%";}});
   const pages=[];let cur=[],start=null;
   kids.forEach(k=>{const t=k.offsetTop,b=t+k.offsetHeight;if(start===null)start=t;
-    if(cur.length&&b-start>avail+1){pages.push(cur);cur=[];start=t;}cur.push(k);});
+    if(cur.length&&b-start>avail+1){const room=avail-(t-start);
+      if(room>avail*0.4&&!k.classList.contains("fullpage")){let f=parseFloat(k.style.fontSize)||100;while(k.offsetHeight>room&&f>62){f-=6;k.style.fontSize=f+"%";}}
+      if(k.offsetTop+k.offsetHeight-start>avail+1){pages.push(cur);cur=[];start=k.offsetTop;}}cur.push(k);});
   if(cur.length)pages.push(cur);
   w._pages=pages;showPage(w,Math.min(PG[key]||0,Math.max(0,pages.length-1)));
 }
